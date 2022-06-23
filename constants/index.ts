@@ -11,5 +11,5 @@
   // Network chain ids
   export const supportedMetamaskNetworks = [1, 3, 4, 5, 42];
 
-  export const ALBT_TOKEN_ADDRESS = "0xc6869a93ef55e1d8ec8fdcda89c9d93616cf0a72";
-  export const US_ELECTION_ADDRESS = "0xA09fF4F39FD8553051ABf0188100b7C5A6dc5452";
+  export const RINKEBY_WRAPPER_ADDRESS = "0xb194017B7E737ef9AaD860660Be066378FaD8240";
+  export const RINKEBY_TOKEN_ADDRESS = "0xe66C17ef261e9405c96230262951108D13EF1e94";

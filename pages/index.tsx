@@ -4,8 +4,8 @@ import Link from "next/link";
 import Account from "../components/Account";
 import NativeCurrencyBalance from "../components/NativeCurrencyBalance";
 import TokenBalance from "../components/TokenBalance";
-import USLibrary from "../components/USLibrary";
-import { ALBT_TOKEN_ADDRESS, US_ELECTION_ADDRESS } from "../constants";
+import TokenWrapper from "../components/TokenWrapper";
+import { RINKEBY_TOKEN_ADDRESS, RINKEBY_WRAPPER_ADDRESS } from "../constants";
 import useEagerConnect from "../hooks/useEagerConnect";
 
 function Home() {
@@ -43,9 +43,8 @@ function Home() {
         {isConnected && (
           <section>
             <NativeCurrencyBalance />
-
-            <TokenBalance tokenAddress={ALBT_TOKEN_ADDRESS} symbol="ALBT" />
-            <USLibrary contractAddress={US_ELECTION_ADDRESS} />
+            <TokenBalance tokenAddress={RINKEBY_TOKEN_ADDRESS} symbol="BRG" />
+            <TokenWrapper wrapperAddress={RINKEBY_WRAPPER_ADDRESS} symbol="BRG" />
           </section>
         )}
       </main>
