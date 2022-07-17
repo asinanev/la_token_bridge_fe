@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useWeb3React } from "@web3-react/core";
 import { UserRejectedRequestError } from "@web3-react/injected-connector";
 import { useEffect, useState } from "react";
@@ -44,7 +45,9 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
     return (
       <div>
         {isWeb3Available ? (
-          <button
+          <Button
+            sx={{ margin: 2 }}
+            variant="outlined"
             disabled={connecting}
             onClick={() => {
               setConnecting(true);
@@ -60,26 +63,28 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
             }}
           >
             {isMetaMaskInstalled ? "Connect to MetaMask" : "Connect to Wallet"}
-          </button>
-          
+          </Button>
+
         ) : (
-          <button onClick={startOnboarding}>Install Metamask</button>
+          <Button sx={{ margin: 2 }} variant="outlined" onClick={startOnboarding}>Install Metamask</Button>
         )}
-        {(<button
-            disabled={connecting}
-            onClick={async () => {
-              try {
-                await activate(walletConnect(), undefined, true)
-              } catch (e) {
-                if (error instanceof UserRejectedRequestError) {
-                  setConnecting(false);
-                } else {
-                  setError(error);
-                }
+        {(<Button
+          sx={{ margin: 2 }}
+          variant="outlined"
+          disabled={connecting}
+          onClick={async () => {
+            try {
+              await activate(walletConnect(), undefined, true)
+            } catch (e) {
+              if (error instanceof UserRejectedRequestError) {
+                setConnecting(false);
+              } else {
+                setError(error);
               }
-            }}>
-            Wallet Connect
-          </button>)
+            }
+          }}>
+          Wallet Connect
+        </Button>)
         }
       </div>
     );
@@ -87,28 +92,30 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
 
   return (
     <>
-        <a
-      {...{
-        href: formatEtherscanLink("Account", [chainId, account]),
-        target: "_blank",
-        rel: "noopener noreferrer",
-      }}
-    >
-      {ENSName || `${shortenHex(account, 4)}`}
-    </a>
-    <button
-          onClick={async () => {
-            try {
-              await deactivate()
-            } catch (e) { 
-              setError(error);
-            }
-          }}>
-          Disconnect
-        </button>
+      <a
+        {...{
+          href: formatEtherscanLink("Account", [chainId, account]),
+          target: "_blank",
+          rel: "noopener noreferrer",
+        }}
+      >
+        {ENSName || `${shortenHex(account, 4)}`}
+      </a>
+      <Button
+        sx={{ margin: 2 }}
+        variant="outlined"
+        onClick={async () => {
+          try {
+            await deactivate()
+          } catch (e) {
+            setError(error);
+          }
+        }}>
+        Disconnect
+      </Button>
     </>
-   
-    
+
+
   );
 };
 

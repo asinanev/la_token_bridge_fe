@@ -10,24 +10,11 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "sender",
+        "name": "tokenAddress",
         "type": "address"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "LogETHLocked",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
         "name": "sender",
         "type": "address"
@@ -39,7 +26,7 @@
         "type": "uint256"
       }
     ],
-    "name": "LogETHMinted",
+    "name": "LogTokensBurned",
     "type": "event"
   },
   {
@@ -47,6 +34,37 @@
     "inputs": [
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "LogTokensClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": true,
         "internalType": "address",
         "name": "sender",
         "type": "address"
@@ -58,16 +76,16 @@
         "type": "uint256"
       }
     ],
-    "name": "LogETHUnwrapped",
+    "name": "LogTokensLocked",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
-        "name": "sender",
+        "name": "receiver",
         "type": "address"
       },
       {
@@ -77,15 +95,72 @@
         "type": "uint256"
       }
     ],
-    "name": "LogETHWithdrawn",
+    "name": "LogTokensReleased",
     "type": "event"
   },
   {
-    "inputs": [],
-    "name": "BRGToken",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nativeTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "burn",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nativeTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_nativeName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_nativeSymbol",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_recepient",
+        "type": "address"
+      }
+    ],
+    "name": "claim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nativeTokenAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getCorrespondingContract",
     "outputs": [
       {
-        "internalType": "contract BridgeToken",
+        "internalType": "address",
         "name": "",
         "type": "address"
       }
@@ -97,23 +172,15 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "account",
+        "name": "_nativeTokenAddress",
         "type": "address"
-      }
-    ],
-    "name": "getBalanceOf",
-    "outputs": [
+      },
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "lock",
     "outputs": [],
     "stateMutability": "payable",
@@ -122,51 +189,22 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "mint",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
+        "internalType": "address",
+        "name": "_nativeTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_receiver",
+        "type": "address"
+      },
       {
         "internalType": "uint256",
-        "name": "value",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
-    "name": "unwrap",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "viewLockedETH",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-      }
-    ],
-    "name": "withdraw",
+    "name": "release",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

@@ -1,3 +1,15 @@
+## This template has been used to create a unthrustwhorthy bridge DO NOT USE
+
+### Issues:
+
+Error about insufficient funds and unpredictable gas on transfer between user and escrow (only sometimes)
+
+A way to go around it is to click the transfer button again which sends an approval again, so there is probably some timing issue, but I cannot find a solution for it and time is running out, the issue will be added to a TODO list.
+
+P.S. The loading screen can be bypassed by clicking on it :)
+
+# Original README.md
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmirshko%2Fnext-web3-boilerplate)
 
 This is a default [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), customized as the default boilerplate for new Web3 projects.
@@ -15,7 +27,7 @@ This is a default [Next.js](https://nextjs.org/) project bootstrapped with [`cre
 
 **Note**: After adding in your new contract ABIs (in JSON format) to the `/contracts` folder, run `yarn compile-contract-types` to generate the types.
 
-You can import these types when declaring a new Contract hook. The types generated show the function params and return types of your functions, among other helpful types. 
+You can import these types when declaring a new Contract hook. The types generated show the function params and return types of your functions, among other helpful types.
 
 ```ts
 import MY_CONTRACT_ABI from "../contracts/MY_CONTRACT.json";

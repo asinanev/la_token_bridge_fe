@@ -6,7 +6,6 @@ import useTokenContract from "./useTokenContract";
 function getTokenBalance(contract: ERC20) {
   return async (_: string, address: string) => {
     const balance = await contract.balanceOf(address);
-
     return balance;
   };
 }
@@ -17,7 +16,6 @@ export default function useTokenBalance(
   suspense = false
 ) {
   const contract = useTokenContract(tokenAddress);
-
   const shouldFetch =
     typeof address === "string" &&
     typeof tokenAddress === "string" &&
